@@ -3,13 +3,13 @@
 # Runs periodic network tests and displays the results via a web server.
 
 # Specify the base image.
-FROM paradrop/workshop
+FROM ubuntu:16.04
 
 # Install dependencies.  You can add additional packages here following the example.
 RUN apt-get update && apt-get install -y \
 #   <package> \
     nginx \
-    iperf
+    iperf3
 
 # Install files required by the chute.
 #
@@ -25,6 +25,8 @@ ADD chute/run.sh /usr/local/bin/run.sh
 # EXPOSE <port_inside_container>
 #
 EXPOSE 80
+EXPOSE 5201
+EXPOSE 5202
 
 # This is the command that will be run inside the container.  It can be a bash
 # script that runs other commands, a python script, a compiled binary, etc.
